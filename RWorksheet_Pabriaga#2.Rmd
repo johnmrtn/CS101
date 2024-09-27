@@ -95,6 +95,9 @@ save(subset_data, file = "Ranks.RData")
 print(subset_data)
 
 # 9.a
+install.packages("readxl")
+library(readxl)
+
 file_path <- "/Users/johnmartin/Desktop/CS101/hotels-vienna.xlsx" 
 hotels_data <- read_excel(file_path)
 hotels_data
