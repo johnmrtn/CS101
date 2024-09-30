@@ -1,0 +1,105 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# 1.
+age <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 37, 42, 53, 41, 51, 35, 24, 33, 41)
+
+length_age <- length(age)
+print(length_age)
+
+# 2. 
+reciprocal_age <- 1 / age
+print(reciprocal_age)
+
+# 3.
+new_age <- c(age, 0, age)
+print(new_age)
+
+# 4.
+sorted_age <- sort(age)
+print(sorted_age)
+
+# 5.
+min_age <- min(age)
+max_age <- max(age)
+print(min_age)
+print(max_age)
+
+# 6.
+data <- c(2.4, 2.8, 2.1, 2.5, 2.4, 2.2, 2.5, 2.3, 2.5, 2.3, 2.4, 2.7)
+
+length_data <- length(data)
+print(length_data)
+
+# 7.
+double_data <- data * 2
+print(double_data)
+
+# 8.1
+seq_1_to_100 <- seq(1, 100)
+print (seq_1_to_100)
+
+# 8.2
+seq_20_to_60 <- seq(20, 60)
+print (seq_20_to_60)
+
+# 8.3
+mean_20_to_60 <- mean(20:60)
+print (mean_20_to_60)
+
+# 8.4
+sum_51_to_91 <- sum(51:91)
+print (sum_51_to_91)
+
+# 8.5
+seq_1 <- seq(1, 1000)
+print (seq_1)
+
+# 8.b
+data_points <- length(seq_1_to_100) + length(seq_20_to_60) + length(mean_20_to_60 ) + length (sum_51_to_91)
+print(data_points)
+
+# 8.c
+max_until_10 <- max(seq_1_to_1000[1:10])
+print(max_until_10)
+
+# 9.
+filtered_numbers <- Filter(function(i) { all(i %% c(3, 5, 7) != 0) }, seq(100))
+print(filtered_numbers)
+
+# 10.
+seq_backwards <- seq(100, 1)
+print(seq_backwards)
+
+# 11.
+multiples_3_or_5 <- seq(1, 24)[seq(1, 24) %% 3 == 0 | seq(1, 24) %% 5 == 0]
+sum_multiples <- sum(multiples_3_or_5)
+print(multiples_3_or_5)
+print(sum_multiples)
+
+total_data_points <- length(seq_backwards) + length(multiples_3_or_5) + length(sum_multiples)
+print(total_data_points)
+
+# 12. 
+x <- {0 + x + 5 + }
+
+# 13.
+score <- c(72, 86, 92, 63, 88, 89, 91, 92, 75, 75, 77)
+
+x2 <- score[2]
+x3 <- score[3]
+print(x2)
+print(x3)
+
+# 14. 
+a <- c(1,2,999,4,999,6,7)
+print(a, na.print = "-999")
+
+# 15.
+name =readline(prompt="Inputyourname:")
+age =readline(prompt="Inputyourage:")
+print(paste("Mynameis",name,"andIam",age,"yearsold."))
+print(R.version.string)
+
