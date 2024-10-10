@@ -1,0 +1,108 @@
+---
+title: "RWorksheet_Pabriaga#3b"
+author: "John Martin S. Pabriaga"
+date: "2024-09-30"
+output: pdf_document
+---
+```{r}
+# 1.a
+df <- data.frame(
+  Respondents = 1:20,
+  Sex = c(1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2),
+  Fathers_Occupation = c(1, 3, 3, 3, 1, 2, 3, 1, 1, 1, 3, 2, 1, 3, 3, 1, 3, 2, 2, 1),
+  Persons_at_Home = c(5, 7, 3, 8, 5, 9, 6, 7, 8, 4, 7, 5, 4, 7, 8, 1, 3, 11, 7, 6),
+  Siblings_at_School = c(6, 4, 4, 1, 2, 1, 5, 3, 1, 2, 3, 2, 5, 5, 2, 1, 2, 5, 3, 2),
+  Types_of_Houses = c(1, 2, 3, 1, 1, 3, 3, 1, 2, 3, 2, 3, 2, 2, 3, 3, 3, 3, 3, 2)
+)
+
+df
+
+# 1.b 
+str(df)
+summary(df)
+
+# 1.c
+mean(df$Siblings_at_School)
+
+# 1.d 
+df[1:2, ]
+
+# 1.e 
+df[c(3, 5), c(2, 4)]
+
+# 1.f 
+types_houses <- df$Types_of_Houses
+types_houses
+
+# 1.g
+subset(df, Sex == 1 & Fathers_Occupation == 1)
+
+# 1.h 
+subset(df, Sex == 2 & Siblings_at_School >= 5)
+
+
+# 2
+df <- data.frame(
+  Ints = integer(),
+  Doubles = double(),
+  Characters = character(),
+  Logicals = logical(),
+  Factors = factor(),
+  stringsAsFactors = FALSE
+)
+
+print("Structure of the empty dataframe:")
+print(str(df))
+
+# 3
+household_data <- data.frame(
+  Respondents = 1:10,
+  Sex = c("Male", "Female", "Female", "Male", "Male", "Female", 
+          "Female", "Male", "Female", "Male"),
+  Fathers_Occupation = c(1, 2, 3, 3, 1, 2, 2, 1, 3, 1),
+  Persons_at_Home = c(5, 7, 3, 8, 6, 9, 6, 7, 1, 6),
+  Siblings_at_School = c(2, 3, 0, 5, 2, 3, 2, 1, 6, 3),
+  Types_of_Houses = c("Wood", "Concrete", "Concrete", "Wood", "Semi-concrete", 
+                      "Semi-concrete", "Wood", "Semi-concrete", "Semi-concrete", "Concrete")
+)
+
+write.csv(household_data, "HouseholdData.csv", row.names = FALSE)
+
+# 3.a 
+imported_data <- read.csv("HouseholdData.csv")
+print(imported_data)
+
+# 3.b 
+imported_data$Sex <- factor(imported_data$Sex, levels = c("Male", "Female"), labels = c(1, 2))
+print(imported_data)
+
+# 3.c
+imported_data$Types_of_Houses <- factor(imported_data$Types_of_Houses, 
+                                        levels = c("Wood", "Concrete", "Semi-concrete"), 
+                                        labels = c(1, 2, 3))
+print(imported_data)
+
+# 3.d 
+imported_data$Fathers_Occupation <- factor(imported_data$Fathers_Occupation, 
+                                           levels = c(1, 2, 3), 
+                                           labels = c("Farmer", "Driver", "Others"))
+print(imported_data)
+
+# 3.e 
+female_driver <- subset(imported_data, Sex == 2 & Fathers_Occupation == "Driver")
+print(female_driver)
+
+# 3.f 
+siblings_school <- subset(imported_data, Siblings_at_School >= 5)
+print(siblings_school)
+
+# 4. 
+# The graph shows the daily distribution of tweet sentiments (Negative, Neutral, Positive)
+# from July 14 to July 21, 2020. Negative sentiments (red) consistently dominate across all 
+# days, with notable peaks on July 15 and July 21. Positive sentiments (blue) are the second
+# most frequent, showing a steady rise, particularly on July 21. Neutral sentiments (yellow)
+# are generally the least represented and fluctuate more than the other categories. The chart
+# indicates that during this period, the majority of tweets had negative sentiments, with 
+# positive sentiment increasing toward the end of the timeframe.
+```
+ 
