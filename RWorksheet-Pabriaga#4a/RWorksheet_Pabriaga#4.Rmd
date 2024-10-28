@@ -72,13 +72,13 @@ new_order_data <- factor(factor_data, levels = c("East", "West", "North"))
 print(new_order_data)
 ```
 ```{r}
-#5.  
+# 5.  
 data <- read.table("import_march..csv", header = TRUE, sep = ",")
 print(data)
 ```
 ˆ
 ```{r}
-#6. Full Search
+# 6. Full Search
 exhaustive_search <- function(chosen_number) {
   if (is.na(chosen_number)) {
     print("Please enter a valid integer.")
@@ -95,7 +95,7 @@ exhaustive_search(20)
 ```
 
 ```{r}
-#7. Change
+# 7. Change
 price_input <- as.numeric(readline(prompt = "Enter the price of the snack (divisible by 50): "))
 
 calculate_minimum_bills <- function(price) {
@@ -131,7 +131,7 @@ calculate_minimum_bills(price_input)
 
 ```
 ```{r}
-#8.a 
+# 8.a 
 students <- data.frame(
   Name = c("Annie", "Thea", "Steve", "Hanna"),
   Grade1 = c(85, 65, 75, 95),
@@ -142,7 +142,7 @@ students <- data.frame(
 students
 ```
 ```{r}
-#8.b
+# 8.b
 for (i in 1:nrow(students)) {
   avg_score <- (students$Grade1[i] + students$Grade2[i] + students$Grade3[i] + students$Grade4[i]) / 4
   
@@ -156,7 +156,7 @@ for (i in 1:nrow(students)) {
 ```
 
 ```{r}
-#8.c
+# 8.c
 for (test in 2:5) {  
   total_score <- 0
   num_students <- nrow(students)
@@ -177,7 +177,7 @@ for (test in 2:5) {
 ```
 
 ```{r}
-#8.d
+# 8.d
 for (i in 1:nrow(students)) {
   highest_score <- 0  
   student_name <- students$Name[i]
@@ -192,8 +192,6 @@ for (i in 1:nrow(students)) {
     cat(student_name, "’s highest grade this semester is", highest_score, ".\n")
   }
 }
-
-```
 
 
 
