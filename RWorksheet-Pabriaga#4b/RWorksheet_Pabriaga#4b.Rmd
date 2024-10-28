@@ -106,7 +106,7 @@ barplot(gender_counts,
         main = "Number of Males and Females in Household Data",
         xlab = "Gender",
         ylab = "Count",
-        col = c("blue", "pink"),
+        col = c("lightblue", "pink"),
         legend = c("Male", "Female"))
 
 ```
@@ -117,7 +117,7 @@ expense_labels <- names(expenses)
 
 percent_labels <- paste0(expense_labels, " (", round(expenses / sum(expenses) * 100), "%)")
 
-colors <- c("skyblue", "orange", "green", "purple")
+colors <- c("blue", "lightblue", "navy", "purple")
 
 pie(expenses,
     labels = percent_labels,
@@ -142,7 +142,7 @@ means
 #6.c
 species_counts <- table(iris$Species)
 
-colors <- c("lightgray", "lightblue", "lightpink")
+colors <- c("lightgray", "lightblue", "lightgreen")
 
 pie(species_counts,
     main = "Species Distribution in Iris Dataset",
