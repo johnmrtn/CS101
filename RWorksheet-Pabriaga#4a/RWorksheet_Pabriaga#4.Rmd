@@ -2,40 +2,40 @@
 title: "RWorksheet_Pabriaga#4a"
 author: "John Martin S. Pabriaga"
 date: "2024-10-14"
-output: pdf_document
+output:
+  pdf_document: default
+    
 ---
 ```{r}
 # 1. 
-install.packages("readxl")
-library(readxl)
-
-file_path <- "DataFrame.xlsx"
-df <- read_excel(file_path)
-df
+household <- read.table("DataFrame.csv", header = TRUE, sep = ",")
+print("Data loaded successfully:")
+print(head(household))  
+str(household)
 
 # 1.b
-male_subset <- subset(df, Gender == "M")
-female_subset <- subset(df, Gender == "F")
+male_data <- subset(household, Gender == "M")
+female_data <- subset(household, Gender == "F")
 
-print("Male Subset:")
-print(male_subset)
-
-print("Female Subset:")
-print(female_subset)
+male_count <- nrow(male_data)
+female_count <- nrow(female_data)
 
 # 1.c
-mean_shoe_size <- mean(df$ShoeSize, na.rm = TRUE)
-mean_height <- mean(df$Height, na.rm = TRUE)
+mean_shoe_size <- mean(household$ShoeSize, na.rm = TRUE)
+mean_height <- mean(household$Height, na.rm = TRUE)
 
 print(paste("Mean Shoe Size:", mean_shoe_size))
 print(paste("Mean Height:", mean_height))
 
 # 1.d
-correlation <- cor(df$ShoeSize, df$Height, use = "complete.obs")
+correlation <- cor(household$ShoeSize, household$Height, use = "complete.obs")
 
 print(paste("Correlation between Shoe Size and Height:", correlation))
+
 ```
-```{r Factors}
+
+
+```{r}
  # 2. 
 
 months_vector <- c(
@@ -75,5 +75,125 @@ print(new_order_data)
 #5.  
 data <- read.table("import_march..csv", header = TRUE, sep = ",")
 print(data)
+```
+ˆ
+```{r}
+#6. Full Search
+exhaustive_search <- function(chosen_number) {
+  if (is.na(chosen_number)) {
+    print("Please enter a valid integer.")
+  } else if (chosen_number < 1 || chosen_number > 50) {
+    print("The number selected is beyond the range of 1 to 50.")
+  } else if (chosen_number == 20) {
+    print(TRUE)
+  } else {
+    print(chosen_number)
+  }
+}
+exhaustive_search(20) 
 
 ```
+
+```{r}
+#7. Change
+price_input <- as.numeric(readline(prompt = "Enter the price of the snack (divisible by 50): "))
+
+calculate_minimum_bills <- function(price) {
+  if (is.na(price)) {
+    cat("Please enter a valid number.\n")
+    return()
+  }
+  
+  if (price %% 50 != 0) {
+    cat("Price must be a number divisible by 50.\n")
+  } else {
+    denominations <- c(1000, 500, 200, 100, 50)
+    
+    bill_count <- 0
+    
+    for (denom in denominations) {
+      if (price >= denom) {
+        count <- price %/% denom
+        bill_count <- bill_count + count
+        price <- price - (count * denom)
+      }
+    }
+    
+    if (bill_count > 0) {
+      cat("Minimum number of bills needed:", bill_count, "\n")
+    } else {
+      cat("No bills needed.\n")
+    }
+  }
+}
+
+calculate_minimum_bills(price_input)
+
+```
+```{r}
+#8.a 
+students <- data.frame(
+  Name = c("Annie", "Thea", "Steve", "Hanna"),
+  Grade1 = c(85, 65, 75, 95),
+  Grade2 = c(65, 75, 55, 75),
+  Grade3 = c(85, 90, 80, 100),
+  Grade4 = c(100, 90, 85, 90)
+)
+students
+```
+```{r}
+#8.b
+for (i in 1:nrow(students)) {
+  avg_score <- (students$Grade1[i] + students$Grade2[i] + students$Grade3[i] + students$Grade4[i]) / 4
+  
+  if (avg_score > 90) {
+    cat(students$Name[i], "'s average grade this semester is", avg_score, "\n")
+  } else {
+    cat(students$Name[i], "'s average grade is below 90.\n")
+  }
+}
+
+```
+
+```{r}
+#8.c
+for (test in 2:5) {  
+  total_score <- 0
+  num_students <- nrow(students)
+  
+  for (i in 1:num_students) {
+    total_score <- total_score + students[i, test]
+  }
+  
+  average_score <- total_score / num_students
+ 
+  if (average_score < 80) {
+    cat("The", test - 1, "test was difficult.\n")  
+  } else {
+    cat("The", test - 1, "test was not difficult.\n") 
+  }
+}
+
+```
+
+```{r}
+#8.d
+for (i in 1:nrow(students)) {
+  highest_score <- 0  
+  student_name <- students$Name[i]
+  
+  for (j in 2:5) { 
+    if (students[i, j] > highest_score) {
+      highest_score <- students[i, j]  
+    }
+  }
+  
+  if (highest_score > 90) {
+    cat(student_name, "’s highest grade this semester is", highest_score, ".\n")
+  }
+}
+
+```
+
+
+
